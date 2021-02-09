@@ -14,7 +14,7 @@ product, average, quotient and remainder
 using namespace std;
 
 //declaration of funtion prototypes
-int getData(string)
+int getData(string);
 int findSum(int,int);
 int findProduct(int,int);
 int findAverage(int,int);
