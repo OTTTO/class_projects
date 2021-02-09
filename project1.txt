@@ -1,0 +1,29 @@
+COSC 1337 – Fundamentals of Programming
+Project 1 - Expression Review
+Write a C++ program that reads 2 integer values from the keyboard (be sure to
+print a prompt message for the user). The program calculates and prints the
+following:
+
+ the sum of the integers
+ the product of the integers
+ the average of the integers
+ the quotient of the integers
+ the remainder of the integers
+ Be sure to include identifying labels with your output.
+
+SAMPLE RUN (User entry is in RED)
+User’s Entry
+Enter an integer value 29
+Enter another integer value 8
+
+Results
+
+The sum of 29 and 8 is 37
+The product of 29 and 8 is 232
+The average of 29 and 8 is 18
+The quotient after dividing 29 and 8 is 3
+The remainder after dividing 29 and 8 is 5
+
+Page 1 of 1
+
+
