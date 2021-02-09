@@ -14,44 +14,84 @@ product, average, quotient and remainder
 using namespace std;
 
 //declaration of funtion prototypes
-int getProd()
-int findResult(int,int);
-void displayResult(int,int,int);
+int getData(string)
+int findSum(int,int);
+int findProduct(int,int);
+int findAverage(int,int);
+int findQuotient(int,int);
+int findRemainder(int,int);
+void displayResult(int,int,int,string);
 
 int main()
 {
-  //initializing values a and b
+  //initializing values a and b as well as the vaious answers
   int a;
   int b;
-  int answer;
+  int sum;
+  int product;
+  int average;
+  int quotient;
+  int remainder;
 
   //user inputs for variables a and b
   a = getData("Enter the value for a: ");
   b = getData("Enter the value for b: ");
 
-  //calculation for the equation 48 + 2ab + 4b
-  answer = findResult(a,b);
+  //calculations
+  sum = findSum(a,b);
+  product = findProduct(a,b);
+  average = findAverage(a,b);
+  quotient = findQuotient(a,b);
+  remainder = findRemainder(a,b);
 
   //display the result of calculation "48 + 2ab + 4b
-  displayResult(a, b, answer);
+  displayResult(a, b, sum, "The sum of ");
+  displayResult(a, b, product, "The product of ");
+  displayResult(a, b, average, "The average of ");
+  displayResult(a, b, quotient, "The quotient of ");
+  displayResult(a, b, remainder, "The remainder after ");
 
   cin.ignore(); cin.get();
   return 0;
 } // end of main ()
 
 //This will display the result
-void displayResult(int a,int b,int answer)
+void displayResult(int a,int b,int answer,string message)
 {
-  cout << "The answer to 48 + 2ab + 4b, with a being " << a << " and b being " << b << " is " << answer << endl;
+cout << message << a << " and " << b << " is " << answer << endl;
 
 }
-//calculates 48 + 2ab + 4b using two variables given (a and b)
-int findResult(int a, int b)
+//Calculates the sum of the parameters
+int findSum(int a, int b)
 {
-  return 48 + 2 * a + 4 * b;
-}//end of findResult())
+  return a + b; 
+}//end of findSum())
 
-  int getData(string prompt)
+//Calculates the product of the parameters
+int findProduct(int a, int b)
+{
+  return a * b; 
+}//end of findProduct())
+
+//Calculates the average of the parameters
+int findAverage(int a, int b)
+{
+  return a + b /2; 
+}//end of findAverage))
+
+//Calculates the quotient of the parameters
+int findQuotient(int a, int b)
+{
+  return a/b; 
+}//end of findQuotient))
+
+//Calculates the remainder of the parameters
+int findRemainder(int a, int b)
+{
+  return a %  b; 
+}//end of findRemainder
+
+int getData(string prompt)
 {
   int value;
 
