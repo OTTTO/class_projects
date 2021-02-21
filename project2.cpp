@@ -44,7 +44,7 @@ int main()
   while(transactionType != 'E')
   {
     //Process the user's selection of a transaction type and make sure it's uppercase
-    transactionType = toupper(getTransactionType("Select Transaction Type:\nC - Process a Check\nD - Process a deposit \nE - Exit: \n\nEnter tranaction type:  "));
+    transactionType = toupper(getTransactionType("Select Transaction Type:\nC - Process a Check\nD - Process a deposit \nE - Exit: \n\nEnter transaction type:  "));
 
    //Convert the user's selected transactionType into the corresponding English word for it.
    switch(transactionType)
@@ -66,7 +66,7 @@ int main()
       return 0;
     
     //get the amopunt of the transaction from user
-    transactionAmount = getTransactionAmount("Enter transaction amount: ");
+    transactionAmount = getTransactionAmount("Enter transaction amount:  $");
     
     //add a service charge, but only if the transaction type is a check (deposits are free)
     if(transactionType == 'C')
@@ -86,11 +86,12 @@ int main()
 
     //Display the service charge if there was one (i.e. if it was a check)
     if(transactionType == 'C')
-    {
-    cout  << "Service Charge: $0.25 for a " << verboseTransactionType << endl 
-          << "Total Service Charges: $" << fixed << setprecision(2) << serviceCharges << endl << endl
+    cout  << "Service Charge: $0.25 for a " << verboseTransactionType << endl;
+
+    //Display the aggregate of service charges so far
+    cout << "Total Service Charges: $" << fixed << setprecision(2) << serviceCharges << endl << endl
           << "----------------------------------------------------------" << endl;
-    } //endif
+    
   }
 
   cin.ignore(); cin.get();
@@ -111,6 +112,7 @@ float getBeginningBalance(string prompt)
   cout << prompt;
   cin >> value;
   cout << endl << endl;
+  cout << "----------------------------------------------------------" << endl;
   return value;
 }//end getBeginningBalance()
 
