@@ -2,13 +2,13 @@
 Name:     		Daniel Cardin
 Date: 		    Feb 20, 2021
 Assignment #: Project 2
-Status: 		  Working 
+Status: 		  Complete 
 -------------------------------------------------------------------------
 
 Comments
 This program will help users balance a checkbook.  The user will enter a
 transaction type, then enter the transaction and results will be displayed
-taking into account service charges.
+When the user exits, the balance (including service charges) will be shown
 */
 
 #include <iostream>				// for cin, cout, endl
@@ -57,27 +57,26 @@ int main()
                cout << "Processing end of month  \nFinal Balance:  $" << fixed << setprecision(2) << currentBalance << endl;
                break;
      default: cout << "Invalid Input.  " << endl;
-              
 
-   }
+   }//end of switch statement
 
     //Determine if the sentinal value has been entered and exit if it has
     if (transactionType == 'E')
-      return 0;
+      return 0; //end of if
     
     //get the amopunt of the transaction from user
     transactionAmount = getTransactionAmount("Enter transaction amount:  $");
     
     //add a service charge, but only if the transaction type is a check (deposits are free)
     if(transactionType == 'C')
-      serviceCharges = serviceCharges + 0.25;
+      serviceCharges = serviceCharges + 0.25; //end of if
 
     //Calculations
     if(transactionType == 'C')
       currentBalance = currentBalance - transactionAmount; 
     else if (transactionType == 'D')
       currentBalance = currentBalance + transactionAmount;
-    else cout << "No transaction " << endl;
+    else cout << "No transaction " << endl; //end of if/else
       
     //Output to the user
     cout  << "Processing " << verboseTransactionType << " for $" << fixed << setprecision(2) << transactionAmount << endl << endl
@@ -88,13 +87,12 @@ int main()
     if(transactionType == 'C')
     cout  << "Service Charge: $0.25 for a " << verboseTransactionType << endl;
 
-    //Display the aggregate of service charges so far
+    //Display the total service charges so far
     cout << "Total Service Charges: $" << fixed << setprecision(2) << serviceCharges << endl << endl
           << "----------------------------------------------------------" << endl;
-    
-  }
+  }//end of while loop
 
-  cin.ignore(); cin.get();
+  cin.get();
   return 0;
 } // end of main ()
 
