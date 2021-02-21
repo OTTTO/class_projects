@@ -38,7 +38,7 @@ int main()
   float currentBalance = 0.00;
   
   //user inputs for variables transactionType and transactionAmount
-  beginningBalance = getBeginningBalance("Enter the beginning balance:  ");
+  beginningBalance = getBeginningBalance("Enter the beginning balance:  $");
   currentBalance = beginningBalance;
 
   while(transactionType != 'E')
@@ -64,9 +64,13 @@ int main()
     //Determine if the sentinal value has been entered and exit if it has
     if (transactionType == 'E')
       return 0;
-
+    
+    //get the amopunt of the transaction from user
     transactionAmount = getTransactionAmount("Enter transaction amount: ");
-    serviceCharges = serviceCharges + 0.25;
+    
+    //add a service charge, but only if the transaction type is a check (deposits are free)
+    if(transactionType == 'C')
+      serviceCharges = serviceCharges + 0.25;
 
     //Calculations
     if(transactionType == 'C')
@@ -76,12 +80,17 @@ int main()
     else cout << "No transaction " << endl;
       
     //Output to the user
-    cout  << "Processing check for $" << fixed << setprecision(2) << transactionAmount << endl << endl
+    cout  << "Processing " << verboseTransactionType << " for $" << fixed << setprecision(2) << transactionAmount << endl << endl
           << "Processed..." << endl
-          << "Balance: $" << currentBalance << endl 
-          << "Service Charge: $0.25 for a " << verboseTransactionType << endl 
+          << "Balance: $" << currentBalance << endl; 
+
+    //Display the service charge if there was one (i.e. if it was a check)
+    if(transactionType == 'C')
+    {
+    cout  << "Service Charge: $0.25 for a " << verboseTransactionType << endl 
           << "Total Service Charges: $" << fixed << setprecision(2) << serviceCharges << endl << endl
           << "----------------------------------------------------------" << endl;
+    } //endif
   }
 
   cin.ignore(); cin.get();
@@ -93,7 +102,7 @@ void greetUser()
   cout << "--------------------------------------------------------------------" << endl 
        << "------------Daniel Cardin's Checkbook Balancing Program-------------" << endl
        << "--------------------------------------------------------------------" << endl; 
-}
+ }//end greetUser()
  
 float getBeginningBalance(string prompt)
 {
@@ -101,9 +110,9 @@ float getBeginningBalance(string prompt)
 
   cout << prompt;
   cin >> value;
-
+  cout << endl << endl;
   return value;
-}
+}//end getBeginningBalance()
 
 char getTransactionType(string prompt)
 {
@@ -113,7 +122,7 @@ char getTransactionType(string prompt)
   cin >> value;
 
   return value;
-}
+}//end getTransactionType()
 
 float getTransactionAmount(string prompt)
 {
@@ -123,4 +132,4 @@ float getTransactionAmount(string prompt)
   cin >> value;
 
   return value;
-}
+}//end getTransactionAmount()
