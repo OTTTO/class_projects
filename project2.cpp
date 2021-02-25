@@ -18,11 +18,10 @@ When the user exits, the balance (including service charges) will be shown
 using namespace std;
 
 //declaration of funtion prototypes
-float getBeginningBalance(string);
-char getTransactionType(string);
-float getTransactionAmount(string);
+float getBeginningBalance();
+char getTransactionType();
+float getTransactionAmount();
 void greetUser();
-void displayResult(int,int,int,string);
 
 int main()
 {
@@ -38,13 +37,13 @@ int main()
   float currentBalance = 0.00;
   
   //user inputs for variables transactionType and transactionAmount
-  beginningBalance = getBeginningBalance("Enter the beginning balance:  $");
+  beginningBalance = getBeginningBalance();
   currentBalance = beginningBalance;
 
   while(transactionType != 'E')
   {
     //Process the user's selection of a transaction type and make sure it's uppercase
-    transactionType = toupper(getTransactionType("Select Transaction Type:\nC - Process a Check\nD - Process a deposit \nE - Exit: \n\nEnter transaction type:  "));
+    transactionType = getTransactionType();
 
    //Convert the user's selected transactionType into the corresponding English word for it.
    switch(transactionType)
@@ -65,7 +64,7 @@ int main()
       return 0; //end of if
     
     //get the amopunt of the transaction from user
-    transactionAmount = getTransactionAmount("Enter transaction amount:  $");
+    transactionAmount = getTransactionAmount();
     
     //add a service charge, but only if the transaction type is a check (deposits are free)
     if(transactionType == 'C')
@@ -103,32 +102,36 @@ void greetUser()
        << "--------------------------------------------------------------------" << endl; 
  }//end greetUser()
  
-float getBeginningBalance(string prompt)
+float getBeginningBalance()
 {
   float value;
 
-  cout << prompt;
+  cout << "Enter the beginning balance:  $";;
   cin >> value;
   cout << endl << endl;
   cout << "----------------------------------------------------------" << endl;
   return value;
 }//end getBeginningBalance()
 
-char getTransactionType(string prompt)
+char getTransactionType()
 {
   char value;
 
-  cout << prompt;
+  cout << "Select Transaction Type:\n"
+          "C - Process a Check\n"
+          "D - Process a deposit \n"
+          "E - Exit: \n\nEnter transaction type:  ";
+
   cin >> value;
 
-  return value;
+  return toupper(value);
 }//end getTransactionType()
 
-float getTransactionAmount(string prompt)
+float getTransactionAmount()
 {
   float value;
 
-  cout << prompt;
+  cout << "Enter transaction amount:  $";
   cin >> value;
 
   return value;
